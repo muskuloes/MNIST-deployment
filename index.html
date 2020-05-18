@@ -1,7 +1,21 @@
 <html lang="en">
+
 <head>
   <title>MNIST Deployment Demo</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
+
 <body>
+  <div class="container text-center">
+    <div>
+      <button id="clear" class="btn btn-outline-info my-2">clear</button>
+    </div>
+    <canvas id="canvas" class="text-center" style="border: 2px solid; border-radius: 5px; cursor: crosshair;"></canvas>
+    <div>
+      <button id="predict" class="btn btn-outline-success my-2">predict</button>
+    </div>
+  </div>
 </body>
+
 </html>
