@@ -1,14 +1,18 @@
 // from https://towardsdatascience.com/deploying-your-first-deep-learning-model-mnist-in-production-environment-510bfdc4808d
 const canvas = document.querySelector("#canvas");
-canvas.width = 280;
-canvas.height = 280;
+const canvas2 = document.querySelector("#canvas2");
 const context = canvas.getContext("2d");
 const canvastop = canvas.offsetTop;
+canvas.width = 280;
+canvas.height = 280;
+canvas2.width = 28;
+canvas2.height = 28;
 let lastx;
 let lasty;
 context.lineCap = "round";
 context.lineJoin = "round";
-context.lineWidth = 5;
+context.lineWidth = 20;
+
 function dot(x, y) {
   context.beginPath();
   context.arc(x, y, 1, 0, Math.PI * 2, true);
@@ -16,6 +20,7 @@ function dot(x, y) {
   context.stroke();
   context.closePath();
 }
+
 function line(fromx, fromy, tox, toy) {
   context.beginPath();
   context.moveTo(fromx, fromy);
@@ -23,12 +28,14 @@ function line(fromx, fromy, tox, toy) {
   context.stroke();
   context.closePath();
 }
+
 canvas.ontouchstart = function (event) {
   event.preventDefault();
   lastx = event.touches[0].clientX;
   lasty = event.touches[0].clientY - canvastop;
   dot(lastx, lasty);
 };
+
 canvas.ontouchmove = function (event) {
   event.preventDefault();
   let newx = event.touches[0].clientX;
@@ -37,12 +44,10 @@ canvas.ontouchmove = function (event) {
   lastx = newx;
   lasty = newy;
 };
+
 let Mouse = { x: 0, y: 0 };
 let lastMouse = { x: 0, y: 0 };
-context.fillStyle = "white";
 context.color = "#FF0000";
-context.fillRect(0, 0, canvas.width, canvas.height);
-context.lineWidth = 10;
 context.lineJoin = context.lineCap = "round";
 
 canvas.addEventListener(
@@ -55,6 +60,7 @@ canvas.addEventListener(
   },
   false
 );
+
 canvas.addEventListener(
   "mousedown",
   function (e) {
@@ -62,6 +68,7 @@ canvas.addEventListener(
   },
   false
 );
+
 canvas.addEventListener(
   "mouseup",
   function () {
@@ -69,8 +76,8 @@ canvas.addEventListener(
   },
   false
 );
+
 const onPaint = function () {
-  context.lineWidth = context.lineWidth;
   context.lineJoin = "round";
   context.lineCap = "round";
   context.strokeStyle = context.color;
@@ -80,9 +87,3 @@ const onPaint = function () {
   context.closePath();
   context.stroke();
 };
-
-const clearButton = document.querySelector("#clear");
-clearButton.addEventListener("click", function () {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  console.clear();
-});
