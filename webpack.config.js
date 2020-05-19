@@ -17,8 +17,8 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: "model/*",
-          to: "model",
+          from: "./model/**",
+          to: ".",
           toType: 'dir'
         },
       ],
