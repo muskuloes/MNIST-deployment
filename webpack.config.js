@@ -14,4 +14,7 @@ module.exports = {
       template: "index.html",
     }),
   ],
+  experiments: {
+    topLevelAwait: true,
+  },
 };
