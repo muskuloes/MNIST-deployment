@@ -1,9 +1,8 @@
 import "./canvas.js";
 
 import * as tf from "@tensorflow/tfjs";
-// import * as three from "../three.json"; // stores the value 3
 
-const model = await tf.loadLayersModel("../model/model.json");
+const model = await tf.loadLayersModel("./model/model.json"); // model.json is copied to the dist directory by webpack
 
 const canvas = document.querySelector("#canvas");
 const context = canvas.getContext("2d");
