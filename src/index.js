@@ -1,12 +1,15 @@
-import "./canvas.js";
+import createCanvas from "./canvas.js";
 
 import * as tf from "@tensorflow/tfjs";
+// const tf = require("@tensorflow/tfjs");
 
 const model = await tf.loadLayersModel("./model/model.json"); // model.json is copied to the dist directory by webpack
 
 const canvas = document.querySelector("#canvas");
 const canvas2 = document.querySelector("#canvas2");
 const context = canvas.getContext("2d");
+
+createCanvas(canvas, canvas2, context);
 
 const predictButton = document.querySelector("#predict");
 const predictionText = document.querySelector("#prediction");
